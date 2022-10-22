@@ -1,0 +1,32 @@
+.level_four_text {
+    font-size: 35px;
+    position: absolute;
+    top: 360px;
+    right: 120px;
+    line-height: 60px;
+    text-align: left;
+}
+
+.level_four_next_step {
+    position: absolute;
+    height: 70px;
+    width: 300px;
+    border-radius: 5rem 5rem 5rem 5rem;
+    top: 530px;
+    right: 185px;
+    background-color: #0f1855;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    font-size: 30px;
+    color: #dddddd;
+    transition: all .3s ease;
+    z-index: 300;
+}
+
+.level_four_next_step:hover {
+    background-color: #a9acca;
+    cursor: pointer;
+    color: #111111;
+}
