@@ -12,20 +12,20 @@
     width: 300px;
     border-radius: 5rem 5rem 5rem 5rem;
     top: 450px;
-    right: 300px;
-    background-color: #0f1855;
+    right: 40vw;
+    background-color: #ffee00;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 100;
     font-size: 30px;
-    color: #dddddd;
+    color: #111111;
     transition: all .5s ease;
     z-index: 300;
 }
 
 .Start_demo_text:hover {
-    background-color: #a9acca;
+    background-color: #fffbc4;
     cursor: pointer;
     color: #111111;
 }

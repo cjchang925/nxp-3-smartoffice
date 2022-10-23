@@ -1,7 +1,7 @@
 .question {
     font-size: 35px;
     position: absolute;
-    top: 250px;
+    top: 200px;
     right: 150px;
 }
 
@@ -10,7 +10,7 @@
     height: 70px;
     width: 300px;
     border-radius: 5rem 5rem 5rem 5rem;
-    top: 370px;
+    top: 320px;
     right: 180px;
     background-color: #0f1855;
     display: flex;
@@ -34,7 +34,7 @@
     height: 70px;
     width: 300px;
     border-radius: 5rem 5rem 5rem 5rem;
-    top: 500px;
+    top: 450px;
     right: 180px;
     background-color: #0f1855;
     display: flex;
@@ -58,7 +58,7 @@
     height: 70px;
     width: 300px;
     border-radius: 5rem 5rem 5rem 5rem;
-    top: 630px;
+    top: 580px;
     right: 180px;
     background-color: #0f1855;
     display: flex;
@@ -82,7 +82,7 @@
     height: 70px;
     width: 300px;
     border-radius: 5rem 5rem 5rem 5rem;
-    top: 760px;
+    top: 710px;
     right: 180px;
     background-color: rgb(184, 24, 24);
     display: flex;
