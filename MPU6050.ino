@@ -1,10 +1,16 @@
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
+#define slave_address 85
 
+char readByte;
 Adafruit_MPU6050 mpu;
-
+bool ac_state = true;
+bool light_state = true;
 void setup(void) {
+  pinMode(32, OUTPUT);
+  pinMode(33, OUTPUT);
+  Wire.begin();
   Serial.begin(115200);
   Serial.println("Adafruit MPU6050 test!");
   while (!Serial){
@@ -108,7 +114,7 @@ void loop() {
   Serial.println(" rad/s");
 
   //calculate PGA
-  float PGA = sqrt(pow(a.acceleration.x*100, 2)+pow(a.acceleration.y*100, 2)+pow((a.acceleration.z-9.8)*100, 2))-60;
+  float PGA = sqrt(pow(a.acceleration.x*100, 2)+pow(a.acceleration.y*100, 2)+pow((a.acceleration.z-9.8)*100, 2))-65;
   Serial.println(PGA);
   //classification
   int csf;
@@ -117,12 +123,39 @@ void loop() {
   else if (PGA < 8) csf = 2;
   else if (PGA < 25)csf = 3;
   else if (PGA < 80)csf = 4;
-  else if (PGA < 140) csf = -5;
-  else if (PGA < 250) csf = 5;
-  else if (PGA < 440) csf = -6;
-  else if (PGA < 800) csf = 6;
-  else csf = 7;
+  else if (PGA < 140) csf = 5;
+  else if (PGA < 250) csf = 6;
+  else if (PGA < 440) csf = 7;
+  else if (PGA < 800) csf = 8;
+  else csf = 9;
+  Serial.println(csf);
+  if(csf > 6)
+  {
+    ac_state = false;
+    light_state = false; 
+  }
+  else if(csf >= 4)
+  {
+    ac_state = true;
+    light_state = false;
+  }
+  else
+  {
+    ac_state = true;
+    light_state = true;
+  }
 
+  digitalWrite(32, ~ac_state);
+  digitalWrite(33, ~light_state);
+  
   Serial.println("");
+  if (Serial.available()){
+    readByte = csf;
+    Serial.write(readByte);
+    Wire.beginTransmission(slave_address);
+    Wire.write(readByte);
+    Wire.endTransmission();
+  }
+  
   delay(500);
 }
